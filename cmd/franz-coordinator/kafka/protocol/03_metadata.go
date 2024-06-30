@@ -50,7 +50,7 @@ func (h *Metadata) Handle(kreq kmsg.Request) (kmsg.Response, error) {
 		}
 
 		sp := kmsg.NewMetadataResponseTopicPartition()
-		sp.Partition = 1
+		sp.Partition = 0
 		sp.Leader = 1
 		sp.LeaderEpoch = 1
 		sp.Replicas = append(sp.Replicas, 1)
