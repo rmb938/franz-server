@@ -38,6 +38,11 @@ func (c *client) Run() {
 			return
 		}
 
+		// TODO: stop using ReadFull so we can do zero-copy between network and disk
+		//	this is really only important for produce and consume
+		//	but it's easier to implement for everything
+		//	we will need a custom kbin Reader to do so
+
 		packetBody := make([]byte, binary.BigEndian.Uint32(packetSize))
 		_, err = io.ReadFull(c.conn, packetBody)
 		if err != nil {
